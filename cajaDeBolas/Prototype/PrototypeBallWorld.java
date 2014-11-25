@@ -1,6 +1,7 @@
-package cajaDeBolas.Flyweight;
+package cajaDeBolas.Prototype;
 
 import cajaDeBolas.*;
+import cajaDeBolas.Prototype.PrototypeFactory.ApirienceType;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import javax.swing.event.*;
  * @author Hock-Chuan Chua
  * @version October 2010
  */
-public class FlyweightBallWorld extends JPanel {
+public class PrototypeBallWorld extends JPanel {
 
     private final int UPDATE_RATE = 30;    // Frames per second (fps)
     private final float EPSILON_TIME = 1e-2f;  // Threshold for zero time
@@ -22,7 +23,7 @@ public class FlyweightBallWorld extends JPanel {
     // Balls
     private int MAX_BALLS = 20; // Max number allowed 
     private int currentNumBalls;             // Number currently active
-    private FlyweightBall[] balls = new FlyweightBall[MAX_BALLS];
+    private PrototypeBall[] balls = new PrototypeBall[MAX_BALLS];
 
     // The obstacles
     private ContainerBox box;               // The container box
@@ -48,11 +49,11 @@ public class FlyweightBallWorld extends JPanel {
      * @param width : screen width
      * @param height : screen height
      */
-    public FlyweightBallWorld(int width, int height, int numBalls) {
+    public PrototypeBallWorld(int width, int height, int numBalls) {
         final int controlHeight = 30;
         canvasWidth = width;
         canvasHeight = height - controlHeight;  // Leave space for the control panel
-        MAX_BALLS = numBalls; 
+        MAX_BALLS = numBalls;
 
         // Init the Container Box to fill the screen
         box = new ContainerBox(0, 0, canvasWidth, canvasHeight, Color.BLACK, Color.WHITE);
@@ -70,21 +71,26 @@ public class FlyweightBallWorld extends JPanel {
         polygon2 = new ObstaclePolygon(polygon2Xs, polygon2Ys, Color.WHITE);
         circle = new ObstacleCircle(400, -30, 100, Color.WHITE);
 
-
-        FlyweightFactory Factory = new FlyweightFactory();
-        Color[] colors = {Color.red, Color.yellow, Color.blue, Color.GREEN,Color.orange};
-        ArrayList<FlyweightBall> ballsArray = new ArrayList<>();
+        PrototypeFactory Factory = new PrototypeFactory();
+        String[] Apirience = {ApirienceType.BLUE, ApirienceType.YELLOW, ApirienceType.BLUE, ApirienceType.GREEN, ApirienceType.ORANGE};
+        ArrayList<PrototypeBall> ballsArray = new ArrayList<>();
 
         Random ram = new Random();
 
+        PrototypeAperiences apirience;
+        String color; 
         for (int x = 0; x < MAX_BALLS; x++) {
-            ballsArray.add(new FlyweightBall(50+ram.nextInt(200), 50+ram.nextInt(200), ram.nextInt(6), -114 + ram.nextInt(174),
-                    Factory.lookup(colors[ram.nextInt(5)])));
-                   
+           
+            color = Apirience[ram.nextInt(5)];
+            apirience = Factory.lookup(color);
+            
+            ballsArray.add(new PrototypeBall(50 + ram.nextInt(200), 50 + ram.nextInt(200), ram.nextInt(6), -114 + ram.nextInt(174),
+                    apirience));
+
         }
-        currentNumBalls = ballsArray.size(); 
-        balls = ballsArray.toArray(balls); 
-        
+        currentNumBalls = ballsArray.size();
+        balls = ballsArray.toArray(balls);
+
         // Init the custom drawing panel for the box/ball
         canvas = new DrawCanvas();
 
@@ -314,8 +320,6 @@ public class FlyweightBallWorld extends JPanel {
                 }
             });
 
-           
-          
         }
     }
 }

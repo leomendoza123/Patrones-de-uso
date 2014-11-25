@@ -27,7 +27,7 @@ public class CollisionResponse {
    public float t;
    // Time threshold to be subtracted from collision time
    // to prevent moving over the bound. Assume that t <= 1.
-   private static final float T_EPSILON = 0.005f;
+   private final float T_EPSILON = 0.005f;
    
    /** Computed speed in x-direction after collision */
    public float newSpeedX;

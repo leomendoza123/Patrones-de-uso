@@ -11,11 +11,11 @@ import javax.swing.event.*;
  * @version October 2010
  */
 public class BallWorld extends JPanel {
-   private static final int UPDATE_RATE = 30;    // Frames per second (fps)
-   private static final float EPSILON_TIME = 1e-2f;  // Threshold for zero time
+   private  final int UPDATE_RATE = 30;    // Frames per second (fps)
+   private  final float EPSILON_TIME = 1e-2f;  // Threshold for zero time
 
    // Balls
-   private static final int MAX_BALLS = 25; // Max number allowed 
+   private  final int MAX_BALLS = 25; // Max number allowed 
    private int currentNumBalls;             // Number currently active
    private Ball[] balls = new Ball[MAX_BALLS];
 
