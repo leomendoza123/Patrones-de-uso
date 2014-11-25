@@ -42,13 +42,14 @@ public class ConnectMSSQLServer {
         return estudiantes;
 
     }
-    private static ConnectMSSQLServer instance = null;
+
 
     private ConnectMSSQLServer() {
         dbConnect("jdbc:sqlserver://poosql.cloudapp.net:57500", "test3",
                 "Admin123");
     }
-
+    private static ConnectMSSQLServer instance = null;
+    
     public static ConnectMSSQLServer getInstance() {
         if (instance == null) {
             instance = new ConnectMSSQLServer();

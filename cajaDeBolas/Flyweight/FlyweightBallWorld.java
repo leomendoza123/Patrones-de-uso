@@ -82,6 +82,7 @@ public class FlyweightBallWorld extends JPanel {
                     Factory.lookup(colors[ram.nextInt(5)])));
                    
         }
+        
         currentNumBalls = ballsArray.size(); 
         balls = ballsArray.toArray(balls); 
         

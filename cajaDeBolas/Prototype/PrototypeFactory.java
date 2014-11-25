@@ -16,11 +16,11 @@ class PrototypeFactory {
     public PrototypeFactory() {
         this.prototypes = new HashMap<String, PrototypeAperiences>();
         this.ram = new Random();
-        prototypes.put(ApirienceType.RED, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.red));
-        prototypes.put(ApirienceType.YELLOW, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.yellow));
-        prototypes.put(ApirienceType.BLUE, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.blue));
-        prototypes.put(ApirienceType.GREEN, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.GREEN));
-        prototypes.put(ApirienceType.ORANGE, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.orange));
+        prototypes.put(Appearance.RED, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.red));
+        prototypes.put(Appearance.YELLOW, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.yellow));
+        prototypes.put(Appearance.BLUE, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.blue));
+        prototypes.put(Appearance.GREEN, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.GREEN));
+        prototypes.put(Appearance.ORANGE, new PrototypeAperiences(6 * ram.nextInt(5) + 5, Color.orange));
     }
 
     PrototypeAperiences lookup(String color) {
@@ -40,7 +40,7 @@ class PrototypeFactory {
         return prototypes.size();
     }
 
-    public static class ApirienceType {
+    public static class Appearance {
 
         public static final String RED = "red";
         public static final String YELLOW = "yellow";

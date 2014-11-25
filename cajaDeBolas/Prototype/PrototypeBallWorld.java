@@ -1,7 +1,7 @@
 package cajaDeBolas.Prototype;
 
 import cajaDeBolas.*;
-import cajaDeBolas.Prototype.PrototypeFactory.ApirienceType;
+import cajaDeBolas.Prototype.PrototypeFactory.Appearance;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -72,20 +72,20 @@ public class PrototypeBallWorld extends JPanel {
         circle = new ObstacleCircle(400, -30, 100, Color.WHITE);
 
         PrototypeFactory Factory = new PrototypeFactory();
-        String[] Apirience = {ApirienceType.BLUE, ApirienceType.YELLOW, ApirienceType.BLUE, ApirienceType.GREEN, ApirienceType.ORANGE};
+        String[] Apirience = {Appearance.BLUE, Appearance.YELLOW, Appearance.BLUE, Appearance.GREEN, Appearance.ORANGE};
         ArrayList<PrototypeBall> ballsArray = new ArrayList<>();
 
         Random ram = new Random();
 
-        PrototypeAperiences apirience;
+        PrototypeAperiences apperience;
         String color; 
         for (int x = 0; x < MAX_BALLS; x++) {
            
             color = Apirience[ram.nextInt(5)];
-            apirience = Factory.lookup(color);
+            apperience = Factory.lookup(color);
             
             ballsArray.add(new PrototypeBall(50 + ram.nextInt(200), 50 + ram.nextInt(200), ram.nextInt(6), -114 + ram.nextInt(174),
-                    apirience));
+                    apperience));
 
         }
         currentNumBalls = ballsArray.size();

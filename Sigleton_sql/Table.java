@@ -22,8 +22,8 @@ public class Table extends javax.swing.JFrame {
     public Table() {
  initComponents();
         try {
-            ConnectMSSQLServer conecion = ConnectMSSQLServer.getInstance();
-            ArrayList<estudiante> DBestudiantes = conecion.getEstudiantes();
+            ConnectMSSQLServer coneccion = ConnectMSSQLServer.getInstance();
+            ArrayList<estudiante> DBestudiantes = coneccion.getEstudiantes();
 
             int i = 0;
             for (estudiante Objestudiante : DBestudiantes) {
